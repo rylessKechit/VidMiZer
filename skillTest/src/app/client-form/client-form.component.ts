@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpRequestService } from "../shared/http-request.service";
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-client-form',
@@ -27,6 +28,7 @@ export class ClientFormComponent implements OnInit {
       firstName: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z]*')]),
       lastName: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z]*')]),
       email: new FormControl(null, [Validators.email]),
+      region: new FormControl('Guadeloupe'),
       phoneNumber: new FormControl(null, [Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]),
     })
   }
@@ -52,6 +54,7 @@ export class ClientFormComponent implements OnInit {
     return this.clientForm.get('phoneNumber');
   }
 
+  // Get data from Form
   submitData() {
     console.log(this.clientForm.value);
   }

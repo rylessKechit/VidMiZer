@@ -51,7 +51,7 @@
       </div>
 
       <!-- Phone Number -->
-      <div class='mt-2 mb-2 col-lg-12 col-12'>
+      <div class='mt-2 mb-2 col-lg-6 col-6'>
         <input type="text" formControlName='phoneNumber' class='form-control' placeholder='Phone Number'>
       <!-- display error start -->
       <div *ngIf='phoneNumber.invalid && (phoneNumber.touched || phoneNumber.dirty)'>
@@ -63,6 +63,14 @@
         </span>
       </div>
       <!-- display error end -->
+      </div>
+
+      <!-- Select Region -->
+      <div class='mt-2 mb-2 col-lg-6 col-6'>
+        <select type="text" class='form-control' formControlName='region' defaultValue='Select Region'>
+          <option value='' disabled selected hidden>Select a Region</option>
+          <option *ngFor="let region of regions" [ngValue]='region.nom'>{{region.nom}}</option>
+        </select>
       </div>
 
       <!-- Submit -->
