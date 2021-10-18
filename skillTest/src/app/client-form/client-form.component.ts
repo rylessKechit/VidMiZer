@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpRequestService } from "../shared/http-request.service";
+import { ClientInfos } from '../shared/client-infos';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -14,6 +15,10 @@ export class ClientFormComponent implements OnInit {
 
 
   regions: any = [];
+  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'region'];
+  dataSource: ClientInfos[] = [
+    {firstName: 'Ryless', lastName: 'Kechit', email: 'ryless.kechit@outlook.com', region: 'Guadeloupe', phoneNumber: '0641903254'}
+  ];
 
   constructor(
     private httpClient: HttpClient,
