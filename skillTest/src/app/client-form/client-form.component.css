@@ -6,6 +6,11 @@
   border-radius: 10px;
 }
 
+.mat-table{
+  width: 80%;
+  margin: 20px;
+}
+
 .big-container{
   display: flex;
 }

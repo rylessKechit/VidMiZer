@@ -61,7 +61,8 @@ export class ClientFormComponent implements OnInit {
 
   // Get data from Form
   submitData() {
-    console.log(this.clientForm.value);
+    this.dataSource.push(this.clientForm.value);
+    console.log('SUBMIT : ', this.dataSource);
   }
 
 }
