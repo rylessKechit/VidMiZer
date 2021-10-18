@@ -1,9 +1,14 @@
 .content{
-  max-width: 500px;
+  max-width: 80%;
   margin: auto;
   background-color: #fff;
   padding: 5% 7%;
   border-radius: 10px;
+}
+
+.mat-table{
+  width: 90%;
+  margin: 20px;
 }
 
 .big-container{

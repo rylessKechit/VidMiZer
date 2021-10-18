@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { HttpRequestService } from "../shared/http-request.service";
 import { ClientInfos } from '../shared/client-infos';
 import { map } from 'rxjs/operators';
@@ -16,13 +16,14 @@ export class ClientFormComponent implements OnInit {
 
   regions: any = [];
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'region'];
-  dataSource: ClientInfos[] = [
-    {firstName: 'Ryless', lastName: 'Kechit', email: 'ryless.kechit@outlook.com', region: 'Guadeloupe', phoneNumber: '0641903254'}
+  dataSource: any = [
+    {firstName: 'Ryless', lastName: 'Kechit', email: 'ryless.kechit@outlook.com', region: 'Guadeloupe', phoneNumber: '0641903254'},
+    {firstName: 'Hamid', lastName: 'Dubois', email: 'hamid@dubois.com', region: 'ile-de-france', phoneNumber: '1234567890'},
   ];
 
   constructor(
-    private httpClient: HttpClient,
     public httpRequest: HttpRequestService,
+    private changeDetectorRefs: ChangeDetectorRef,
   ) { }
 
   clientForm: any; // Form fields
@@ -61,7 +62,14 @@ export class ClientFormComponent implements OnInit {
 
   // Get data from Form
   submitData() {
+    this.dataSource.push(this.clientForm.value);
+    this.changeDetectorRefs.detectChanges()
     console.log(this.clientForm.value);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
