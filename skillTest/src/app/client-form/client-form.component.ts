@@ -62,7 +62,12 @@ export class ClientFormComponent implements OnInit {
 
   // Get data from Form
   submitData() {
-    this.dataSource.push(this.clientForm.value);
+    const isValid = this.dataSource.some((e: any) => {
+      e.firstName === this.clientForm.firstName ||
+      e.lastName === this.clientForm.lastName ||
+      e.phoneNumber === this.clientForm.phoneNumber
+    })
+    !isValid && this.dataSource.push(this.clientForm.value);
     this.changeDetectorRefs.detectChanges()
     console.log(this.clientForm.value);
   }
