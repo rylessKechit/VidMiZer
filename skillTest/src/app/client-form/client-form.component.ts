@@ -17,7 +17,7 @@ export class ClientFormComponent implements OnInit {
   regions: any = [];
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'region'];
   dataSource: ClientInfos[] = [
-    {firstName: 'Ryless', lastName: 'Kechit', email: 'ryless.kechit@outlook.com', region: 'Guadeloupe', phoneNumber: '0641903254'}
+    {firstName: 'Ryless', lastName: 'Kechit', email: 'kechit_r@etna-alternance.net', region: 'Île-de-France', phoneNumber: '0641903254'}
   ];
 
   constructor(
@@ -42,7 +42,7 @@ export class ClientFormComponent implements OnInit {
   loadRegions() {
     return this.httpRequest.getRegions().subscribe((data: {}) => {
       this.regions = data;
-      console.log(this.regions);
+      console.log('REGIONS : ', this.regions);
     })
   }
 
